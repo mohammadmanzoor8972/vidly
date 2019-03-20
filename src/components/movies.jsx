@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { Tapable } from "tapable";
 
-import { getMovies,deleteMovie } from "../services/fakeMovieService";
+import { getMovies,deleteMovie,getMovieSeearch } from "../services/fakeMovieService";
 
 export default class Movies extends Component {
   state = {
-    movies: getMovies()
+    movies: getMovies(),
+    result:[]
   };
 
   handleDelete = (movie) =>{
@@ -18,6 +19,21 @@ export default class Movies extends Component {
     })
   }
 
+  findMoviesHandler=(event)=>{
+    var txt = event.target.value;
+    if(txt.length>3){
+    const movies = getMovies().filter((mov)=>{
+      return mov.title.indexOf(txt)!==-1
+    });
+
+    this.setState({movies})
+    console.log(this.state)
+    } else if(txt.length==0){
+      this.setState({movies:getMovies()})
+    }
+    
+  }
+
   render() {
       const {length:count} = this.state.movies;
 
@@ -25,6 +41,7 @@ export default class Movies extends Component {
     return (
     <Fragment>
         <span>Shows {count} record in database</span>
+        <input type="search" className="form-control" onChange={this.findMoviesHandler}></input>
       <table className="table">
         <thead>
           <tr>

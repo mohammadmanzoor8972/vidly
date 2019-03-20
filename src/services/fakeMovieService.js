@@ -76,6 +76,10 @@ export function getMovie(id) {
   return movies.find(m => m._id === id);
 }
 
+export function getMovieSeearch(str) {
+  return movies.find(m => m.title.indexOf(str) !== -1);
+}
+
 export function saveMovie(movie) {
   let movieInDb = movies.find(m => m._id === movie._id) || {};
   movieInDb.title = movie.title;
