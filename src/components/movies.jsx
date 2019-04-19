@@ -1,11 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { Tapable } from "tapable";
+import MovieCard from './moviescard'
 
 import { getMovies,deleteMovie,getMovieSeearch } from "../services/fakeMovieService";
+import Like from "./like";
 
 export default class Movies extends Component {
   state = {
     movies: getMovies(),
+    isLike: true,
     result:[]
   };
 
@@ -34,10 +37,14 @@ export default class Movies extends Component {
     
   }
 
+  likeHandler=()=>{
+
+  }
+
   render() {
       const {length:count} = this.state.movies;
 
-      if(count==0) return <p>There are not data in datbase</p>
+      //if(count==0) return <p>There are not data in datbase</p>
     return (
     <Fragment>
         <span>Shows {count} record in database</span>
@@ -52,18 +59,29 @@ export default class Movies extends Component {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          {this.state.movies.map((movie, keys) => (
+        <tbody> 
+          {count !=0 && this.state.movies.map((movie, keys) => (
             <tr key={keys}>
              <td>{movie.title}</td>
              <td>{movie.genre.name}</td>
              <td>{movie.numberInStock}</td>
              <td>{movie.dailyRentalRate}</td>
+             <td><Like/></td>
              <td><i className="fa fa-remove btn btn-danger" onClick={()=>this.handleDelete(movie)}></i></td>
             </tr>
           ))}
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+      <MovieCard movies={this.state.movies}></MovieCard>
       </Fragment>
     );
   }
