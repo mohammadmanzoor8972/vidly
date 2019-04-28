@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Tapable } from "tapable";
-import MovieCard from './common/moviescard'
 import Pagination from './common/pagination'
 import { getMovies, deleteMovie, getMovieSeearch } from "../services/fakeMovieService";
 import MoviesTable from "./moviesTable";

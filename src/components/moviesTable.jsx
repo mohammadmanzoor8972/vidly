@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Like from "./common/like";
+import { Link } from 'react-router-dom';
 
 
 const renderIcon=(dd)=>{
@@ -24,7 +25,7 @@ const MoviesTable = ({deleteHandler,
                 <tbody>
                     {count != 0 && movies.map((movie, keys) => (
                         <tr key={keys} >
-                            <td>{movie.title}</td>
+                            <td> <Link class="nav-link" to={"/moviesdet/"+movie._id}>{movie.title}</Link> </td>
                             <td>{movie.genre.name}</td>
                             <td>{movie.numberInStock}</td>
                             <td>{movie.dailyRentalRate}</td>

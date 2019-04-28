@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -14,16 +14,13 @@ const NavBar = () => {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <Link class="nav-link" to="/">Home</Link>
+        <NavLink class="nav-link" to="/movies">Movies</NavLink>
       </li>
       <li class="nav-item">
-       <Link class="nav-link" to="/movies">Movies</Link>
+       <NavLink class="nav-link" to="/customer">Customer</NavLink>
       </li>
       <li class="nav-item">
-        <Link class="nav-link" to="/dashboard">Dashboard</Link>
-      </li>
-      <li class="nav-item">
-        <Link class="nav-link" to="/no-page">Default</Link>
+        <NavLink class="nav-link" to="/rental">Rental</NavLink>
       </li>
     </ul>
   </div>
