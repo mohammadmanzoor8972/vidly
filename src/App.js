@@ -8,10 +8,11 @@ import MovieDetails from './components/movieDetail';
 import LoginForm from './components/loginForm';
 import Register from './components/register';
 import MovieForm from './components/movieForm';
+import HttpDemo from './components/httpDemo';
 
 class App extends Component {
 
-  bootstrap
+  
   render() {
     return (
       
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/login" component={LoginForm}/>
             <Route path="/register" component={Register}/>
             <Route path="/movieForm" component={MovieForm}/>
+            <Route path="/apicall" component={HttpDemo}/>
 
         </Switch>
         </div>
