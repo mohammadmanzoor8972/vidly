@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Input = ({label, name, handleChange, value, type, helptext, error}) => {
+const Input = ({label, name, handleChange, value, type, helptext, error, autoFocus}) => {
 
     switch(type){
         case "checkbox":
@@ -26,7 +26,7 @@ const Input = ({label, name, handleChange, value, type, helptext, error}) => {
             name={name} 
             onChange={handleChange} 
             value={value} 
-            autoFocus="true" 
+            autoFocus={autoFocus}
             type={type}
             className="form-control"
             aria-describedby="emailHelp" 

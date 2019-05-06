@@ -18,6 +18,11 @@ export default class Movies extends Component {
     sortColumn: {path:'title', order:'asc'}
   };
 
+  componentDidMount=()=>{
+   // const movies = getMovies();
+    //this.setState({movies});
+  }
+
   handleDelete = (movie) => {
     const movies = this.state.movies.filter((mov) => {
       return mov._id !== movie._id
@@ -69,6 +74,7 @@ export default class Movies extends Component {
   }
 
   render() {
+    debugger;
     const { length: count } = this.state.movies;
     const { pageSize, currentPage, movies: allMovies, sortColumn } = this.state;
 
@@ -86,7 +92,12 @@ export default class Movies extends Component {
               clickHandler={this.listgroupHandler}/>
           </div>
           <div className="col-md-8">
+          <button  className="btn btn-primary" onClick={()=>{
+            this.props.history.push("/movieForm");
+           }}>New Movies</button>
+           <br></br>
             <span>Shows {count} record in database</span>
+            
             <MoviesTable
               deleteHandler={this.handleDelete}
               movies={movies}
