@@ -25,7 +25,7 @@ const MoviesTable = ({deleteHandler,
                 <tbody>
                     {count != 0 && movies.map((movie, keys) => (
                         <tr key={keys} >
-                            <td> <Link class="nav-link" to={"/moviesdet/"+movie._id}>{movie.title}</Link> </td>
+                            <td> <Link class="nav-link" replace="true" to={"/moviesdet/"+movie._id}>{movie.title}</Link> </td>
                             <td>{movie.genre.name}</td>
                             <td>{movie.numberInStock}</td>
                             <td>{movie.dailyRentalRate}</td>
