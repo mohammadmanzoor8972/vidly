@@ -37,10 +37,6 @@ class LoginForm extends Form {
                    <Input name="isRemember" label="is Remember" type="checkbox" value={data.isRemember} helptext="please type valid password" handleChange={this.handleChange} />
                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
-          
-          <MyChild>
-             Hello india
-          </MyChild>
             </div>
         )
     }

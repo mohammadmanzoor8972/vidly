@@ -9,6 +9,8 @@ import LoginForm from './components/loginForm';
 import Register from './components/register';
 import MovieForm from './components/movieForm';
 import HttpDemo from './components/httpDemo';
+import Button, { DataLoader } from './components/hooks';
+import Todo from './components/todo';
 
 class App extends Component {
 
@@ -28,6 +30,8 @@ class App extends Component {
             <Route path="/register" component={Register}/>
             <Route path="/movieForm" component={MovieForm}/>
             <Route path="/apicall" component={HttpDemo}/>
+            <Route path="/hooks" component={DataLoader}/>
+            <Route path="/todos" component={Todo}/>
 
         </Switch>
         </div>
