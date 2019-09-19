@@ -1,10 +1,13 @@
 import React, { Component, async, Fragment } from 'react'
 
-import axios from 'axios';
+import http from '../services/httpService';
+import {ToastContainer} from 'react-toastify';
+import '../App.css'
 
 class HttpDemo extends Component {
 
 
+    
     state = {
         posts:[]
     }
@@ -14,18 +17,8 @@ class HttpDemo extends Component {
     
 
     async componentDidMount(){
-    const {data:posts} = await axios.get(this.urls);
+    const {data:posts} = await http.get(this.urls);
     this.setState({posts});
-
-    axios.interceptors.response.use(resp =>{
-        return Promise.resolve(resp)
-    }, error =>{
-        console.log('INTERCEPTOR CALLED');
-        console.log(error);
-        return Promise.reject();
-
-    });
-
     
 
     }
@@ -37,7 +30,7 @@ class HttpDemo extends Component {
         this.setState({posts});
 
         try {
-            axios.delete(this.urls +"/"+post.id);
+            http.delete(this.urls +"/"+post.id);
            // throw new Error('some failed')
         } catch (ex){
             this.setState({posts: originalPosts})
@@ -56,7 +49,7 @@ class HttpDemo extends Component {
         this.setState({posts});
 
         try{
-            await axios.put(this.urls +"/242"+post.id, post);
+            await http.put(this.urls +"/242"+post.id, post);
         }catch{
             alert("something wrong");
             posts[index]={...originalPost};
@@ -71,6 +64,7 @@ class HttpDemo extends Component {
         const {posts} = this.state;
         return (
             <Fragment>
+                <ToastContainer/>
             <table>
             <thead>
                 <tr>
